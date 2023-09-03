@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Calendar;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
@@ -40,15 +41,8 @@ public class PersonReader {
                 BufferedReader reader =
                         new BufferedReader(new InputStreamReader(in));
 
-                // Finally we can read the file LOL!
-
-                String tableHeader = "ID#" + "      " + "First Name" + "     " + "Last Name" + "    " + "Title" + "     " + "YOB";
-                String headerSeperator = "===================================================";
-
-                System.out.println();
-                System.out.println(tableHeader);
-                System.out.println(headerSeperator);
-
+                // Assigns values from CSV file to fields ArrayList
+                // Goes by each line in the file
                 while(reader.ready())
                 {
                     String rec = reader.readLine();
@@ -60,12 +54,6 @@ public class PersonReader {
                     String personTitle = fields[3];
                     String personYOB = fields[4];
 
-                    System.out.printf("%-10s", personID);
-                    System.out.printf("%-14s", personFirstName);
-                    System.out.printf("%-14s", personLastName);
-                    System.out.printf("%-8s", personTitle);
-                    System.out.printf("%-4s", personYOB);
-                    System.out.println();
                 }
                 reader.close(); // must close the file to seal it and flush buffer
                 System.out.println("\n\nData file read!");
