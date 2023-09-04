@@ -41,8 +41,8 @@ public class ProductReader {
                         new BufferedReader(new InputStreamReader(in));
 
                 // Variable initialization for table header
-                String tableHeader = "ID#" + "      " + "First Name" + "     " + "Last Name" + "    " + "Title" + "     " + "YOB";
-                String headerSeperator = "===================================================";
+                String tableHeader = "ID#" + "           " + "Name" + "             " + "Description" + "                  " + "Cost";
+                String headerSeperator = "==================================================================";
 
                 // Printing table header before filling values from object
                 System.out.println();
@@ -56,26 +56,24 @@ public class ProductReader {
                     String rec = reader.readLine();
                     String[] fields = rec.split(",", 0);
 
-                    String personID = fields[0];
-                    String personFirstName = fields[1];
-                    String personLastName = fields[2];
-                    String personTitle = fields[3];
-                    String personYOB = fields[4];
+                    String productID = fields[0];
+                    String productName = fields[1];
+                    String productDesc = fields[2];
+                    String productCost = fields[4];
 
-                    // Must convert YOB value from String to Int
-                    // person.YOB is Int, PersonGenerator uses SafeInput.getRangedInt, etc.
-                    String formattedYOB = personYOB.replace(" ", "");
-                    int YOBInt = Integer.parseInt(formattedYOB);
+                    // Must convert YOB value from String to Double
+                    String formattedCost = productCost.replace(" ", "");
+                    double costDouble = Integer.parseInt(formattedCost);
 
                     // Creates object from CSV values
-                    var person = new Person(personID, personFirstName, personLastName, personTitle, YOBInt);
+                    var product = new Product(productID, productName, productDesc, costDouble);
 
                     // Prints table from object attributes
-                    System.out.printf("%-10s", person.getID());
-                    System.out.printf("%-14s", person.getFirstName());
-                    System.out.printf("%-14s", person.getLastName());
-                    System.out.printf("%-8s", person.getTitle());
-                    System.out.printf("%-4s", person.getYearOfBirth());
+                    System.out.printf("%-12s", product.getID());
+                    System.out.printf("%-16s", product.getName());
+                    System.out.printf("%-30s", product.getDescription());
+                    System.out.printf("%-6s", product.getCost());
+
                     System.out.println();
                 }
                 reader.close(); // must close the file to seal it and flush buffer

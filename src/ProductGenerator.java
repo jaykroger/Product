@@ -17,30 +17,28 @@ public class ProductGenerator {
         File workingDirectory = new File(System.getProperty("user.dir"));
         Path file = Paths.get(workingDirectory.getPath() + "\\src\\PersonTestData.txt");
 
-        String personRec = "";
-        String personID = "";
-        String personFirstName = "";
-        String personLastName = "";
-        String personTitle = "";
-        int personYearOfBirth = 0;
+        String productRec = "";
+        String productID = "";
+        String productName = "";
+        String productDesc = "";
+        double productCost = 0;
         boolean done = false;
 
         do {
 
             // Assigns values from user input
-            personID = SafeInput.getNonZeroLenString(in, "ID [6 digits]");
-            personFirstName = SafeInput.getNonZeroLenString(in, "First Name");
-            personLastName = SafeInput.getNonZeroLenString(in, "Last Name");
-            personTitle = SafeInput.getNonZeroLenString(in, "Title");
-            personYearOfBirth = SafeInput.getRangedInt(in, "Year of Birth ", 1000, 9999);
+            productID = SafeInput.getNonZeroLenString(in, "ID [6 digits]");
+            productName = SafeInput.getNonZeroLenString(in, "Product Name");
+            productDesc = SafeInput.getNonZeroLenString(in, "Product Description");
+            productCost = SafeInput.getDouble(in, "Cost");
 
 
             // Initializes person object with attributes populated from user input above
-            var person = new Person(personID, personFirstName, personLastName, personTitle, personYearOfBirth);
+            var product = new Product(productID, productName, productDesc, productCost);
 
             // Creates record from object and adds to ArrayList people
-            personRec = person.getID() + ", " + person.getFirstName() + ", " + person.getLastName() + ", " + person.getTitle() + ", " + person.getYearOfBirth();
-            people.add(personRec);
+            productRec = product.getID() + ", " + product.getName() + ", " + product.getDescription() + ", " + product.getCost();
+            people.add(productRec);
 
             // Checks if user is done entering input
             done = SafeInput.getYNConfirm(in, "Done?");
