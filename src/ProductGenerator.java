@@ -2,13 +2,12 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Calendar;
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static java.nio.file.StandardOpenOption.CREATE;
 
-public class PersonGenerator {
+public class ProductGenerator {
     public static void main(String[] args) {
 
         // Variable initialization
@@ -88,5 +87,4 @@ public class PersonGenerator {
             e.printStackTrace();
         }
     }
-
 }
