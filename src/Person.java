@@ -1,3 +1,4 @@
+import java.util.*;
 public class Person {
     String ID;
     String firstName;
@@ -53,4 +54,25 @@ public class Person {
         this.yearOfBirth = yearOfBirth;
     }
 
+
+    Calendar c = Calendar.getInstance();
+
+    // New Methods
+    public String fullName(String firstName, String lastName) {
+        return firstName + " " + lastName;
+    } // returns the full name of the user (first name + space + last name)
+
+    public String formalName(String title, String firstName, String lastName) {
+        return title + " " + fullName(firstName, lastName);
+    } // returns the formal full name of the user (title + full name)
+
+    public int getAge(int YOB) {
+        int currentYear = c.get(Calendar.YEAR);
+        return currentYear - YOB;
+    } // returns the age assuming the current year
+
+    public int getAgeSpecifiedYear(int year, int YOB) {
+        int age = year - YOB;
+        return age;
+    } // uses YOB to calculate age for a specified year based on the Calendar object
 }
