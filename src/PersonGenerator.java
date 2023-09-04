@@ -40,7 +40,7 @@ public class PersonGenerator {
             var person = new Person(personID, personFirstName, personLastName, personTitle, personYearOfBirth);
 
             // Creates record from object and adds to ArrayList people
-            personRec = person.getPersonID() + ", " + person.getPersonFirstName() + ", " + person.getPersonLastName() + ", " + person.getPersonTitle() + ", " + person.getPersonYearOfBirth();
+            personRec = person.getID() + ", " + person.getFirstName() + ", " + person.getLastName() + ", " + person.getTitle() + ", " + person.getYearOfBirth();
             people.add(personRec);
 
             // Checks if user is done entering input

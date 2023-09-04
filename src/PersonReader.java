@@ -41,6 +41,15 @@ public class PersonReader {
                 BufferedReader reader =
                         new BufferedReader(new InputStreamReader(in));
 
+                // Variable initialization for table header
+                String tableHeader = "ID#" + "      " + "First Name" + "     " + "Last Name" + "    " + "Title" + "     " + "YOB";
+                String headerSeperator = "===================================================";
+
+                // Printing table header before filling values from object
+                System.out.println();
+                System.out.println(tableHeader);
+                System.out.println(headerSeperator);
+
                 // Assigns values from CSV file to fields ArrayList
                 // Goes by each line in the file
                 while(reader.ready())
@@ -54,6 +63,21 @@ public class PersonReader {
                     String personTitle = fields[3];
                     String personYOB = fields[4];
 
+                    // Must convert YOB value from String to Int
+                    // person.YOB is Int, PersonGenerator uses SafeInput.getRangedInt, etc.
+                    String formattedYOB = personYOB.replace(" ", "");
+                    int YOBInt = Integer.parseInt(formattedYOB);
+
+                    // Creates object from CSV values
+                    var person = new Person(personID, personFirstName, personLastName, personTitle, YOBInt);
+
+                    // Prints table from object attributes
+                    System.out.printf("%-10s", person.getID());
+                    System.out.printf("%-14s", person.getFirstName());
+                    System.out.printf("%-14s", person.getLastName());
+                    System.out.printf("%-8s", person.getTitle());
+                    System.out.printf("%-4s", person.getYearOfBirth());
+                    System.out.println();
                 }
                 reader.close(); // must close the file to seal it and flush buffer
                 System.out.println("\n\nData file read!");
